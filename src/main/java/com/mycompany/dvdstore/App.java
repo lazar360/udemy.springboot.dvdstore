@@ -1,9 +1,12 @@
 package com.mycompany.dvdstore;
 
+import com.mycompany.dvdstore.controller.MovieController;
 import com.mycompany.dvdstore.entity.Movie;
 import com.mycompany.dvdstore.service.MovieService;
 
 import java.util.Scanner;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * Register a new movie
@@ -12,18 +15,15 @@ import java.util.Scanner;
 public class App 
 {
     public static void main( String[] args ) {
-        Movie movie = new Movie();
-        MovieService movieService = new MovieService();
-
         Scanner scanner = new Scanner(System.in);
+        MovieController movieController = new MovieController();
+        System.out.println("Welcome to the DVD Store !\n Please type 1 for the register method.");
+        int chooseOption = parseInt(scanner.nextLine());
 
-        System.out.println( "Type a film title, please." );
-        movie.setTitle(scanner.nextLine());
-
-        System.out.println( "Type a film genre, please." );
-        movie.setGenre(scanner.nextLine());
-
-        movieService.add(movie);
-        scanner.close();
+        if (chooseOption == 1) {
+            movieController.addUsingConsole();
+        } else {
+            System.out.println("Please type 1 for the register method.");
+        }
     }
 }
